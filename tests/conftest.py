@@ -3,15 +3,15 @@ from modules.api.clients.github import GitHub
 
 
 class User:
-    
+
     def __init__(self) -> None:
         self.name = None
         self.second_name = None
-        
+
     def create(self):
         self.name = "Nata"
         self.second_name = "Ketova"
-        
+
     def remove(self):
         self.name = ""
         self.second_name = ""
@@ -21,9 +21,7 @@ class User:
 def user():
     user = User()
     user.create()
-        
     yield user
-        
     user.remove()
 
 
@@ -31,4 +29,3 @@ def user():
 def github_api():
     api = GitHub()
     yield api
-       
