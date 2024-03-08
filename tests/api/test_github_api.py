@@ -42,8 +42,25 @@ def test_emoji_climbing_can_be_found(github_api):
 
 # test_7
 @pytest.mark.api
-def test_emoji_ukraine_can_be_found(github_api):
+def test_emoji_fire_can_be_found(github_api):
     emojiname = 'fire' #move this to fixture
     r = github_api.get_emojis()
     assert emojiname in r
+
+# test_8 work with list commit comments for a repository
+@pytest.mark.api
+def test_list_commit_comments_loaded(github_api):
+    r = github_api.get_list_commit_comments_for_a_repo(owner='naftysa', repo='CourseProject23NataKetova')
+
+    assert r == [] 
+    #change assert  after the 1-st commit comment is added
+    # or choose another method for project %)
+
+# test_9 Verify that definite text is present in commits list
+@pytest.mark.api
+def test_commits_list_is_loaded(github_api):
+    r = github_api.get_commits_list(owner='naftysa', repo='CourseProject23NataKetova')
+
+    assert 'Project task 4' not in r
+    
     
