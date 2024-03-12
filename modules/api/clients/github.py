@@ -22,8 +22,8 @@ class GitHub:
 
         return body
 
-    def get_commits_list(self, owner, repo):
-        r = requests.get(f"https://api.github.com/repos/{owner}/{repo}/commits")
+    def get_commits_list(self, owner, repo, dateSince, dateUntil):
+        r = requests.get(f"https://api.github.com/repos/{owner}/{repo}/commits?since={dateSince}&until={dateUntil}")
         body = r.json()
 
         return body
@@ -34,5 +34,5 @@ class GitHub:
 
         return body
 
-#commitsList = GitHub.get_commits_list(self=GitHub, owner='naftysa', repo='CourseProject23NataKetova')
+#commitsList = GitHub.get_commits_list(self=GitHub, owner='naftysa', repo='CourseProject23NataKetova', dateSince='2024-03-01', dateUntil='2024-03-11')
 #print(commitsList)

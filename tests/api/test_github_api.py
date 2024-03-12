@@ -56,11 +56,17 @@ def test_list_commit_comments_loaded(github_api):
     #change assert  after the 1-st commit comment is added
     # or choose another method for project %)
 
-# test_9 Verify that definite text is present in commits list
+# test_9 Verify that definited text from defined commit is present
+@pytest.mark.api
+def test_definite_commit_is_loaded(github_api):
+    r = github_api.get_commits_list(owner='naftysa', repo='CourseProject23NataKetova', dateSince='2024-03-01', dateUntil='2024-03-08')
+
+    assert {r[0]['commit']['message']} != "Added method getting commits list, added test verifying that commits list is loaded - Project task 4"
+    
+# test_10 Verify that definite text is present in commits list
 @pytest.mark.api
 def test_commits_list_is_loaded(github_api):
-    r = github_api.get_commits_list(owner='naftysa', repo='CourseProject23NataKetova')
+    r = github_api.get_commits_list(owner='naftysa', repo='CourseProject23NataKetova', dateSince='2024-02-28', dateUntil='2024-03-08')
 
-    assert 'Project task 4' not in r
-    
+    assert {r[0]['commit']['committer']['date']} != "2024-03-08T13:51:35Z"
     
