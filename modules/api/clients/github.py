@@ -33,6 +33,3 @@ class GitHub:
         body = r.json()
 
         return body
-
-#commitsList = GitHub.get_commits_list(self=GitHub, owner='naftysa', repo='CourseProject23NataKetova', dateSince='2024-03-01', dateUntil='2024-03-11')
-#print(commitsList)
