@@ -2,6 +2,7 @@ import pytest
 from modules.common.database import Database
 
 
+
 @pytest.mark.database
 def test_database_connection():
     db = Database()
@@ -39,10 +40,10 @@ def test_product_qnt_update():
 @pytest.mark.database
 def test_product_insert():
     db = Database()
-    db.insert_product(5, "pechyvo", "solodke", 30)
-    water_qnt = db.select_product_qnt_by_id(5)
+    db.insert_product(1, "вода солодка", "з цукром", 25)
+    water_qnt = db.select_product_qnt_by_id(1)
 
-    assert water_qnt[0][0] == 30
+    assert water_qnt[0][0] == 25
 
 
 @pytest.mark.database
@@ -66,5 +67,5 @@ def test_detailed_orders():
     # Check structure of data
     assert orders[0][0] == 1
     assert orders[0][1] == "Sergii"
-    assert orders[0][2] == "sweet water"
-    assert orders[0][3] == "with sugar"
+    assert orders[0][2] == "вода солодка"
+    assert orders[0][3] == "з цукром"
