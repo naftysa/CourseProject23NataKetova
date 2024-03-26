@@ -47,6 +47,16 @@ def test_product_insert():
 
 
 @pytest.mark.database
+def test_order_insert():
+    db = Database()
+    db.insert_order(3, 3, 2, '14:28:26')
+    customer_id_added = db.get_detailed_orders()
+    
+    print("Customer_id row added to db is: ", customer_id_added)
+    print()
+    
+
+@pytest.mark.database
 def test_product_delete():
     db = Database()
     db.insert_product(99, "тестові", "дані", 999)
@@ -56,16 +66,26 @@ def test_product_delete():
     assert len(qnt) == 0
 
 
-@pytest.mark.database
+@pytest.mark.database 
 def test_detailed_orders():
     db = Database()
     orders = db.get_detailed_orders()
     print("Zamovlennya", orders)
     # Check quantity of orders equal to 1
-    assert len(orders) == 1
+    assert len(orders) == 2
 
     # Check structure of data
     assert orders[0][0] == 1
     assert orders[0][1] == "Sergii"
     assert orders[0][2] == "вода солодка"
     assert orders[0][3] == "з цукром"
+
+
+@pytest.mark.database
+def test_cannot_insert_text_to_int_column():
+    db = Database()
+    db.insert_product("88", "test data", "description of test data", "true")
+    check_id = db.get_detailed_orders()
+    print("Check added values: ", check_id)
+    
+    

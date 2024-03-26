@@ -1,5 +1,5 @@
 import sqlite3
-
+import datetime
 
 class Database:
 
@@ -44,6 +44,12 @@ class Database:
             VALUES ({product_id}, '{name}', '{description}', {qnt})"
         self.cursor.execute(query)
         self.connection.commit()
+        
+    def insert_order(self, order_id, customer_id, product_id, order_date):
+        query = f"INSERT OR REPLACE INTO orders (id, customer_id, product_id, order_date) \
+            VALUES ({order_id}, {customer_id}, {product_id}, '{order_date}')"
+        self.cursor.execute(query)
+        self.connection.commit()
 
     def delete_product_by_id(self, product_id):
         query = f"DELETE FROM products WHERE id = {product_id}"
@@ -60,3 +66,5 @@ class Database:
         record = self.cursor.fetchall()
         return record
     
+#    def get_order_product_customer_details(self):
+#        query = "SELECT order.id, "
