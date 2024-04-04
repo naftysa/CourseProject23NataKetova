@@ -25,10 +25,8 @@ class SignInPage(BasePage):
         pass_elem.send_keys(password)
         
         # Знаходимо кнопку sign in
-        btn_elem = self.driver.find_element(By.NAME, "commit")
-        
-        # Емулюємо клік лівою кнопкою миші
-        btn_elem.click()
+        btn_elem = self.driver.find_element(By.NAME, "commit").click()
+
         
     def check_title(self, expected_title):
         return self.driver.title == expected_title
