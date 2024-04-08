@@ -39,12 +39,21 @@ class HomePageOkwine(BasePage):
         
         # Search for the 'Into the cart delivery' button
         found_add_to_cart = self.driver.find_element(By.XPATH, "//*[@id='__next']/div[5]/div/div[2]/div[2]/span/div[2]/div/div[2]/button").click()
-
-        # Verify that text on the button is 'Деталі доставки'
-    def check_delivery_button_text(self, expected_value):
-        search_cart_icon_counter = self.driver.find_element(By.XPATH, "//*[@id='__next']/div[5]/div/div[2]/div[2]/span/div[2]/div/div[2]/button/text()")
-        print(search_cart_icon_counter.text)
-        return search_cart_icon_counter.text == expected_value
-
+        time.sleep(5)
         
-          
+        # Find and click the cart button in the header
+        find_cart_icon = self.driver.find_element(By.XPATH, "//*[@id='__next']/header/div/div[9]/a")
+        find_cart_icon.click()
+        time.sleep(5)
+    
+        # Find and click the ordered product from cart
+        find_order_info_link = self.driver.find_element(By.XPATH, "//*[@id='__next']/div[3]/div/div/div[1]/div[3]/form/div[2]/div[1]/div/ul/div/li/div/div[1]/h4/a")
+        find_order_info_link.click()
+        time.sleep(5)
+        
+        # Verify that text on the page is that one we expected
+    def check_page_text(self, expected_value):
+        search_expected_text = self.driver.find_element(By.XPATH, "//*[@id='__next']/div[5]/div/div[2]/div[2]/div[1]/div[1]/span").text
+        print(search_expected_text.encode("utf-8"))
+        return search_expected_text == expected_value
+              

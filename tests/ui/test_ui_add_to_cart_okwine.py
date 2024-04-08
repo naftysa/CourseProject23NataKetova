@@ -17,7 +17,7 @@ def test_check_product_added_to_cart():
     add_to_cart_page.try_add_to_cart("Віскі Ардбег Тен")
     
     # Перевіряємо, шо елемент на сторінці той, який ми очікуємо
-    assert add_to_cart_page.check_delivery_button_text("Деталі доставки")
+    assert add_to_cart_page.check_page_text(str("УТП005549"))
     
     # Закриваємо браузер
     #add_to_cart_page.close() #uncomment this after debug is done
