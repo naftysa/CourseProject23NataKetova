@@ -43,14 +43,23 @@ class HomePageOkwine(BasePage):
         find_cart_icon.click()
         wait = WebDriverWait(webdriver.Chrome(), 3)
     
+        
+    def check_page_text(self, expected_value):
         # Find and click the ordered product from cart
         find_order_info_link = self.driver.find_element(By.XPATH, "//*[@id='__next']/div[3]/div/div/div[1]/div[3]/form/div[2]/div[1]/div/ul/div/li/div/div[1]/h4/a")
         find_order_info_link.click()
         wait = WebDriverWait(webdriver.Chrome(), 3)
         
-        # Verify that text on the page is that one we expected
-    def check_page_text(self, expected_value):
         search_expected_text = self.driver.find_element(By.XPATH, "//*[@id='__next']/div[5]/div/ul/li[3]/a").text
         #print(search_expected_text.encode("UTF-8"))
         return search_expected_text == expected_value
-              
+      
+    def delete_item_from_cart(self, expected_text):
+        search_trash_can_icon = self.driver.find_element(By.XPATH, "//*[@id='__next']/div[3]/div/div/div[1]/div[3]/form/div[2]/div[1]/div/ul/div/li/span")
+        search_trash_can_icon.click()
+        wait = WebDriverWait(webdriver.Chrome(), 3)
+        
+        search_empty_cart_text = self.driver.find_element(By.XPATH, "//*[@id='__next']/div[3]/div/div/div/h1").text
+        print(search_empty_cart_text.encode("UTF-8"))
+        return search_empty_cart_text == expected_text
+        
