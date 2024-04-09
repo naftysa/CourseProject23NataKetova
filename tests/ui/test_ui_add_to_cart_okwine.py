@@ -2,7 +2,7 @@ from modules.ui.page_objects.home_page_okwine import HomePageOkwine
 import pytest
 
 
-@pytest.mark.uii
+@pytest.mark.okwineui
 def test_check_product_added_to_cart():
     # Створення об'єкту сторінки
     add_to_cart_page = HomePageOkwine()
@@ -17,8 +17,7 @@ def test_check_product_added_to_cart():
     add_to_cart_page.try_add_to_cart("Віскі Ардбег Тен")
     
     # Перевіряємо, шо елемент на сторінці той, який ми очікуємо
-    assert add_to_cart_page.check_page_text(str("УТП005549"))
+    assert add_to_cart_page.check_page_text(str("Віскі Ардбег Тен / Ardbeg Ten, 10 років, 46%, 0.7л, в коробці"))
     
     # Закриваємо браузер
-    #add_to_cart_page.close() #uncomment this after debug is done
-    
+    add_to_cart_page.close()   
