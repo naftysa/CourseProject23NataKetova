@@ -2,7 +2,7 @@ from modules.ui.page_objects.home_page_okwine import HomePageOkwine
 import pytest
 
 
-@pytest.mark.uii
+@pytest.mark.okwineui
 def test_check_product_added_to_cart():
     # Створення об'єкту сторінки
     add_to_cart_page = HomePageOkwine()
@@ -20,4 +20,4 @@ def test_check_product_added_to_cart():
     add_to_cart_page.delete_item_from_cart("Ваш кошик порожній")
     
     # Закриваємо браузер
-    #add_to_cart_page.close()   
+    add_to_cart_page.close()
