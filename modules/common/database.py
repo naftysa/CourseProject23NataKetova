@@ -4,10 +4,7 @@ import datetime
 class Database:
 
     def __init__(self):
-        self.connection = sqlite3.connect(
-            r"C:\Users\Nata\CourseProject23NataKetova\CourseProject23NataKetova"
-            + r"\become_qa_auto.db"
-        )
+        self.connection = sqlite3.connect(r"C:\Users\Nata\CourseProject23NataKetova\CourseProject23NataKetova" + r"\become_qa_auto.db")
         self.cursor = self.connection.cursor()
 
     def test_connection(self):
@@ -66,5 +63,3 @@ class Database:
         record = self.cursor.fetchall()
         return record
     
-#    def get_order_product_customer_details(self):
-#        query = "SELECT order.id, "
